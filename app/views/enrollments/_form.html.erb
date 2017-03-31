@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :person_id %>
-    <%= f.text_field :person_id %>
+    <%= f.label :student_id %>
+    <%= f.select :student, options_for_select(Person.all.map{|s|[s.to_s, s.id]}) %>
   </div>
 
   <div class="field">

@@ -11,3 +11,6 @@
 
         // Use teacher instead of person in Course controllers
         rails generate scaffold_controller Course title:string code:string teacher:references --force
+
+        // Use student instead of person in Enrollment controllers
+        rails generate scaffold_controller Enrollment student:references course:references --force
