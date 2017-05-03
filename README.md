@@ -14,3 +14,15 @@
 
         // Use student instead of person in Enrollment controllers
         rails generate scaffold_controller Enrollment student course --force
+
+        // add quota to courses
+        rails generate migration AddQuotaToCourses
+
+        // add quota to courses
+        rails generate migration AddIsProfessorToPeople
+
+        // add Assignment model
+        rails generate scaffold Assignment title:string statement:text course:references
+
+        // add Grade model
+        rails generate scaffold Grade value:float person:references assignment:references
