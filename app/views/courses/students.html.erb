@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<%= render 'people/list', people: @course.students %>
+
+<br>
+
+<%= link_to 'New Student', new_course_enrollment_path(course_id: @course.id) %>

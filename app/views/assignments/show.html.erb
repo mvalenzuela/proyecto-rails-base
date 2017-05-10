@@ -15,5 +15,6 @@
   <%= @assignment.course %>
 </p>
 
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<%= link_to 'Grades', course_assignment_grades_path(assignment_id: @assignment.id) %>
+<%= link_to 'Edit', edit_course_assignment_path %> |
+<%= link_to 'Back', course_assignments_path %>

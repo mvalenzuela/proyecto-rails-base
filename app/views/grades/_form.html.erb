@@ -1,4 +1,4 @@
-<%= form_for(grade) do |f| %>
+<%= form_for([course, assignment, grade]) do |f| %>
   <% if grade.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
@@ -18,12 +18,7 @@
 
   <div class="field">
     <%= f.label :person_id %>
-    <%= f.text_field :person_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :assignment_id %>
-    <%= f.text_field :assignment_id %>
+    <%= f.select :person_id, options_for_select(course.students.all.map{|s|[s.to_s, s.id]}) %>
   </div>
 
   <div class="actions">

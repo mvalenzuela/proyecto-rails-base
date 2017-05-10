@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
+  before_action :set_course
 
   # GET /enrollments
   # GET /enrollments.json
@@ -25,10 +26,11 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+    @enrollment.course = @course
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to [@course, @enrollment], notice: 'Enrollment was successfully created.' }
         format.json { render :show, status: :created, location: @enrollment }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class EnrollmentsController < ApplicationController
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to [@course, @enrollment], notice: 'Enrollment was successfully updated.' }
         format.json { render :show, status: :ok, location: @enrollment }
       else
         format.html { render :edit }
@@ -67,6 +69,14 @@ class EnrollmentsController < ApplicationController
       @enrollment = Enrollment.find(params[:id])
     end
 
+    def set_course
+      if @enrollment and @enrollment.course_id
+        @course = @enrollment.course
+      else
+        @course = Course.find(params[:course_id])
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
       student_id = params.require(:enrollment)[:student]
@@ -75,6 +85,6 @@ class EnrollmentsController < ApplicationController
       else
         student = nil
       end
-      params.require(:enrollment).permit(:course_id).merge(:student => student)
+      params.require(:enrollment).permit().merge(:student => student)
     end
 end

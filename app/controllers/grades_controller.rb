@@ -1,5 +1,7 @@
 class GradesController < ApplicationController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
+  before_action :set_assignment
+  before_action :set_course
 
   # GET /grades
   # GET /grades.json
@@ -25,10 +27,11 @@ class GradesController < ApplicationController
   # POST /grades.json
   def create
     @grade = Grade.new(grade_params)
+    @grade.assignment = @assignment
 
     respond_to do |format|
       if @grade.save
-        format.html { redirect_to @grade, notice: 'Grade was successfully created.' }
+        format.html { redirect_to [@course, @assignment, @grade], notice: 'Grade was successfully created.' }
         format.json { render :show, status: :created, location: @grade }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class GradesController < ApplicationController
   def update
     respond_to do |format|
       if @grade.update(grade_params)
-        format.html { redirect_to @grade, notice: 'Grade was successfully updated.' }
+        format.html { redirect_to [@course, @assignment, @grade], notice: 'Grade was successfully updated.' }
         format.json { render :show, status: :ok, location: @grade }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class GradesController < ApplicationController
   def destroy
     @grade.destroy
     respond_to do |format|
-      format.html { redirect_to grades_url, notice: 'Grade was successfully destroyed.' }
+      format.html { redirect_to course_assignments_grades_url, notice: 'Grade was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +68,18 @@ class GradesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_grade
       @grade = Grade.find(params[:id])
+    end
+
+    def set_assignment
+      if @grade and @grade.assignment_id
+        @assignment = @grade.assignment
+      else
+        @assignment = Assignment.find(params[:assignment_id])
+      end
+    end
+
+    def set_course
+      @course = @assignment.course
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

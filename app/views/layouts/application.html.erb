@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <%= link_to 'courses', courses_path %>
+    <%= link_to 'people', people_path %>
+    <% if @course %>
+      <div>
+        <%= render 'courses/navbar', course: @course %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
