@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :people
   resources :courses do
     resources :enrollments
     resources :assignments do

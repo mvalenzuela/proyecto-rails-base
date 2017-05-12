@@ -9,17 +9,9 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <%= link_to 'courses', courses_path %>
     <%= link_to 'people', people_path %>
-    <% if person_signed_in? %>
-      Logged in as: <%= current_person %>
-      <%= link_to 'Logout', destroy_person_session_path %>
-    <% end %>
-
-    <% if @course and @course.id %>
+    <% if @course %>
       <div>
         <%= render 'courses/navbar', course: @course %>
       </div>
