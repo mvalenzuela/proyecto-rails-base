@@ -15,7 +15,7 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td class="td" id="td" style="background: pink"><%= course.title %></td>
+        <td class="td" id="td"><%= course.title %></td>
         <td><%= course.code %></td>
         <td><%= course.teacher %></td>
         <td><%= link_to 'Show', course %></td>

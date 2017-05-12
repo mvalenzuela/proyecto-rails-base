@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Add user authentication through device
 gem 'devise', '4.2.1'
+
+# Add redcarpet for markdown parsing
+gem 'redcarpet', '~> 3.4.0'
