@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+.alert {
+    font-size: 100px;
+}
+
+#title {
+    background: red;
+}
+
+table:hover {
+    background: blue;
+}
+
+#td {
+    background: black;
+}
+
+td {
+    background: green;
+}
+
+.td {
+    background: yellow;
+}
+
