@@ -5,6 +5,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+
+    if params[:title]
+      @courses = @courses.where("lower(title) like ?", "%#{params[:title]}%")
+    end
   end
 
   # GET /courses/1

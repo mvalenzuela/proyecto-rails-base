@@ -59,3 +59,5 @@ gem 'devise', '4.2.1'
 
 # Add redcarpet for markdown parsing
 gem 'redcarpet', '~> 3.4.0'
+
+gem 'bootstrap-sass', '~> 3.3.6'

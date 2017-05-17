@@ -9,17 +9,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= link_to 'courses', courses_path %>
-    <%= link_to 'people', people_path %>
-    <% if person_signed_in? %>
-      Logged in as: <%= current_person %>
-      <%= link_to('Logout', destroy_person_session_path, :method => :delete) %>
-    <% else %>
-      <%= link_to('Login', new_person_session_path) %>
+    <% unless notice.nil? %>
+      <div class="alert alert-info notice"><%= notice %></div>
     <% end %>
+    <% unless alert.nil? %>
+      <div class="alert alert-warning"><%= alert %></div>
+    <% end %>
+    <%= render 'layouts/navbar' %>
 
     <% if @course and @course.id %>
       <div>

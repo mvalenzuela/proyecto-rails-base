@@ -1,5 +1,13 @@
 <strong>
-  <%= link_to course, course %>:
 </strong>
-<%= link_to 'Assignments', course_assignments_path(course_id: course.id) %>
-<%= link_to 'Students', students_course_path(id: course.id) %>
+<ul class="nav nav-tabs">
+  <li role="presentation">
+    <%= link_to "Curso: " + course.to_s, course %>
+  </li>
+  <li role="presentation">
+    <%= link_to 'Assignments', course_assignments_path(course_id: course.id) %>
+  </li>
+  <li role="presentation">
+    <%= link_to 'Students', students_course_path(id: course.id) %>
+  </li>
+</ul>
