@@ -11,12 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :student_id %>
-    <%= f.select :student, options_for_select(course.students.all.map{|s|[s.to_s, s.id]}) %>
+    <% student_ids = course.students.pluck(:id) %>
+    <% if student_ids.length > 0 %>
+      <% missing_students = Person.where('id NOT IN (?)', course.students.pluck(:id)) %>
+    <% else %>
+      <% missing_students = Person.all %>
+    <% end %>
+    <%= f.select :student, options_for_select(missing_students.all.map{|s|[s.to_s, s.id]}), {}, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
