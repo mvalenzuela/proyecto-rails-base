@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :people
+  devise_for :people, path: 'auth'
+  devise_scope :person do
+    get 'auth', to: 'devise/registrations#new'
+  end
   authenticate :person do
     resources :courses do
       resources :enrollments

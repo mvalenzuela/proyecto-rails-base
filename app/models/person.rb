@@ -18,6 +18,10 @@ class Person < ApplicationRecord
   validates :email_confirmation, presence: true
 
   def to_s
-    return first_name + ' ' + last_name
+    if first_name and last_name
+      return first_name + ' ' + last_name
+    else
+      return ''
+    end
   end
 end

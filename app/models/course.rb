@@ -19,7 +19,6 @@ class Course < ApplicationRecord
 
   validates :quota, {
     presence: true,
-    uniqueness: true,
     numericality: true,
   }
 
