@@ -1,26 +1,27 @@
+<% form_params = [person] if local_assigns[:form_params].nil? %>
 <%= form_for(*form_params) do |f| %>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :last_name %>
     <%= f.text_field :last_name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :email %>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :email_confirmation %>
     <%= f.text_field :email_confirmation, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -28,12 +29,12 @@
     <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit local_assigns[:submit_btn_text], class: "btn btn-primary" %>
+  <div class="form-group actions">
+    <%= f.submit local_assigns[:submit_btn_text], class: "btn btn-success" %>
   </div>
 <% end %>

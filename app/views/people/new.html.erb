@@ -1,5 +1,9 @@
 <h1>New Person</h1>
 
-<%= render 'form', person: @person, form_params: [@person] %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= render 'form', person: @person %>
+  </div>
+</div>
 
 <%= link_to 'Back', people_path, class: "btn btn-primary" %>
