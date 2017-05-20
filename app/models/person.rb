@@ -15,7 +15,7 @@ class Person < ApplicationRecord
     uniqueness: true,
     confirmation: true
   }
-  validates :email_confirmation, presence: true
+  validates :email_confirmation, presence: true, on: :create
 
   def to_s
     if first_name and last_name
